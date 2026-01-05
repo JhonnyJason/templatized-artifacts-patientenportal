@@ -1,0 +1,7 @@
+{
+    "#unuID1 > .exam-count": {
+        "pugKey": "unuKey19",
+        "pugString": "!{templated.unuKey19}",
+        "content": "\n            3 Einträge gefunden\n          "
+    }
+}

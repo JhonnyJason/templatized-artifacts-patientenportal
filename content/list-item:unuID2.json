@@ -1,0 +1,102 @@
+{
+    "#unuID2 > .exam-item > summary > .exam-header-main > .exam-folder-icon": {
+        "pugKey": "unuKey20",
+        "pugString": "!{templated.unuKey20}",
+        "content": "📂"
+    },
+    "#unuID2 > .exam-item > summary > .exam-header-main > .exam-text-block > .exam-title": {
+        "pugKey": "unuKey21",
+        "pugString": "!{templated.unuKey21}",
+        "content": "LG2, SOSD, SOON"
+    },
+    "#unuID2 > .exam-item > summary > .exam-header-main > .exam-text-block > .exam-sub": {
+        "pugKey": "unuKey22",
+        "pugString": "!{templated.unuKey22}",
+        "content": "Dr. Josef Rechberger · Radiologie"
+    },
+    "#unuID2 > .exam-item > summary > .exam-header-meta > .exam-date": {
+        "pugKey": "unuKey23",
+        "pugString": "!{templated.unuKey23}",
+        "content": "25.07.2024"
+    },
+    "#unuID2 > .exam-item > summary > .exam-header-meta > .exam-type": {
+        "pugKey": "unuKey24",
+        "pugString": "!{templated.unuKey24}",
+        "content": "Röntgen / MRT"
+    },
+    "#unuID2 > .exam-item > summary > .exam-chevron": {
+        "pugKey": "unuKey25",
+        "pugString": "!{templated.unuKey25}",
+        "content": "▶"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > .exam-body-label": {
+        "pugKey": "unuKey26",
+        "pugString": "!{templated.unuKey26}",
+        "content": "Behandler:"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > span": {
+        "pugKey": "unuKey27",
+        "pugString": "!{templated.unuKey27}",
+        "content": "Dr. Josef Rechberger"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > .exam-body-label:nth-child(2)": {
+        "pugKey": "unuKey28",
+        "pugString": "!{templated.unuKey28}",
+        "content": "Institut:"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > span:nth-child(2)": {
+        "pugKey": "unuKey29",
+        "pugString": "!{templated.unuKey29}",
+        "content": "Radiologie Rechberger"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > .exam-body-label:nth-child(3)": {
+        "pugKey": "unuKey30",
+        "pugString": "!{templated.unuKey30}",
+        "content": "Leistung:"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > span:nth-child(3)": {
+        "pugKey": "unuKey31",
+        "pugString": "!{templated.unuKey31}",
+        "content": "LG2, SOSD, SOON"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > .exam-body-label:nth-child(4)": {
+        "pugKey": "unuKey32",
+        "pugString": "!{templated.unuKey32}",
+        "content": "Datum:"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > span:nth-child(4)": {
+        "pugKey": "unuKey33",
+        "pugString": "!{templated.unuKey33}",
+        "content": "25.07.2024"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > .exam-body-label:nth-child(5)": {
+        "pugKey": "unuKey34",
+        "pugString": "!{templated.unuKey34}",
+        "content": "Status:"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > span:nth-child(5)": {
+        "pugKey": "unuKey35",
+        "pugString": "!{templated.unuKey35}",
+        "content": "Befund liegt vor"
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-actions > .btn-primary": {
+        "pugKey": "unuKey36",
+        "pugString": "!{templated.unuKey36}",
+        "content": "\n                  Befund öffnen (PDF)\n                "
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-actions > .btn-secondary": {
+        "pugKey": "unuKey37",
+        "pugString": "!{templated.unuKey37}",
+        "content": "\n                  Bilder anzeigen\n                "
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-actions > .btn-secondary.js-ki-explain": {
+        "pugKey": "unuKey38",
+        "pugString": "!{templated.unuKey38}",
+        "content": "\n                  Befund einfach erklären (KI)\n                "
+    },
+    "#unuID2 > .exam-item > .exam-body > .exam-actions > .btn-secondary.js-ki-translate": {
+        "pugKey": "unuKey39",
+        "pugString": "!{templated.unuKey39}",
+        "content": "\n                  Befund übersetzen (KI)\n                "
+    }
+}

@@ -1,0 +1,121 @@
+//  Skip-Link für Screenreader & Tastatur 
+a.skip-link(href='#main') {{{ > body > .skip-link}}}
+.page
+    header
+        .brand
+            .brand-main
+                span {{{ > body > .page > header > .brand > .brand-main > span}}}
+                span.brand-dot(aria-hidden='true')
+            .brand-sub {{{ > body > .page > header > .brand > .brand-sub}}}
+        nav(aria-label={{{ > body > .page > header > nav[aria-label]}}})
+            button.nav-link(aria-current='page') {{{ > body > .page > header > nav > .nav-link}}}
+            button.nav-link {{{ > body > .page > header > nav > .nav-link:nth-child(2)}}}
+            button.nav-link {{{ > body > .page > header > nav > .nav-link:nth-child(3)}}}
+        button.logout-btn(type='button', aria-label={{{ > body > .page > header > .logout-btn[aria-label]}}})
+            span {{{ > body > .page > header > .logout-btn > span}}}
+            span(aria-hidden='true') {{{ > body > .page > header > .logout-btn > span:nth-child(2)}}}
+    main#main(tabindex='-1')
+        section(aria-labelledby='page-title')
+            h1#page-title.page-title {{{#page-title}}}
+            p.page-description {{{#main > section > .page-description}}}
+        //  Patientendaten 
+        section.patient-card(aria-label={{{#main > .patient-card[aria-label]}}})
+            .patient-icon(aria-hidden='true') {{{#main > .patient-card > .patient-icon}}}
+            .patient-info(dynamic-id='unuID0')
+        //  Untersuchungen-Liste 
+        section(aria-label={{{#main > section[aria-label]}}})
+            .exam-section-header
+                h2.page-title(style='font-size: 1.1rem;') {{{#main > section > .exam-section-header > .page-title}}}
+                .exam-count(aria-live='polite', dynamic-id='unuID1')
+            .exam-list(dynamic-id='unuID2')
+    footer {{{ > body > .page > footer}}}
+//
+    
+        MODAL: KI-BEFUNDERKLÄRUNG / ÜBERSETZUNG
+        - Wird von allen „KI“-Buttons verwendet
+        - Barrierefrei: role="dialog", aria-modal, Fokussteuerung per JS
+      
+.modal-backdrop#ki-modal-backdrop(role='presentation', aria-hidden='true')
+    .modal(role='dialog', aria-modal='true', aria-labelledby='ki-modal-title', aria-describedby='ki-modal-description')
+        .modal-header
+            h2#ki-modal-title.modal-title {{{#ki-modal-title}}}
+            button.modal-close-btn#ki-modal-close-btn(type='button', aria-label={{{#ki-modal-close-btn[aria-label]}}}) {{{#ki-modal-close-btn}}}
+        p#ki-modal-description.modal-text {{{#ki-modal-description}}}
+        //
+             =========================
+                       NEU: Disclaimer (Anonymisierung + Kosten + Partner)
+                       - bewusst VOR den Eingabefeldern platziert (Usability: erst informieren, dann handeln)
+                       ========================= 
+        .modal-disclaimer(role='note', aria-label={{{#ki-modal-backdrop > .modal > .modal-disclaimer[aria-label]}}}) {{{#ki-modal-backdrop > .modal > .modal-disclaimer}}}
+        //  NEU: Consent-Checkbox (damit der User aktiv zustimmt; Start-Button erst dann aktiv) 
+        .modal-consent
+            input#ki-consent(type='checkbox')
+            label(for='ki-consent') {{{#ki-modal-backdrop > .modal > .modal-consent > label}}}
+        #ki-consent-error.modal-consent-error(aria-live='polite') {{{#ki-consent-error}}}
+        //  Form-Elemente zur Steuerung des KI-Calls 
+        .modal-form-row
+            label.modal-label(for='ki-mode-select') {{{#ki-modal-backdrop > .modal > .modal-form-row > .modal-label}}}
+            select#ki-mode-select.modal-select
+                option(value='explain') {{{#ki-mode-select > option}}}
+                option(value='translate') {{{#ki-mode-select > option:nth-child(2)}}}
+        .modal-form-row
+            label.modal-label(for='ki-language-select') {{{#ki-modal-backdrop > .modal > .modal-form-row > .modal-label:nth-child(2)}}}
+            select#ki-language-select.modal-select
+                option(value='de-easy') {{{#ki-language-select > option}}}
+                option(value='de') {{{#ki-language-select > option:nth-child(2)}}}
+                option(value='en') {{{#ki-language-select > option:nth-child(3)}}}
+                option(value='hr') {{{#ki-language-select > option:nth-child(4)}}}
+                option(value='sr') {{{#ki-language-select > option:nth-child(5)}}}
+                option(value='bs') {{{#ki-language-select > option:nth-child(6)}}}
+                option(value='tr') {{{#ki-language-select > option:nth-child(7)}}}
+        .modal-form-row
+            label.modal-label(for='ki-notes') {{{#ki-modal-backdrop > .modal > .modal-form-row > .modal-label:nth-child(3)}}}
+            textarea#ki-notes.modal-textarea(rows='2', placeholder={{{#ki-notes[placeholder]}}})
+        .modal-actions
+            button.btn-secondary#ki-modal-cancel-btn(type='button') {{{#ki-modal-cancel-btn}}}
+            //  Start-Button wird per JS aktiviert, wenn Consent gesetzt ist 
+            button.btn-primary#ki-modal-start-btn(type='button', disabled) {{{#ki-modal-start-btn}}}
+        #ki-modal-loading.modal-loading(style='display:none;') {{{#ki-modal-loading}}}
+        #ki-modal-result.modal-result
+            .modal-result-placeholder {{{#ki-modal-result > .modal-result-placeholder}}}
+template#unuID0
+    .patient-name {{{#unuID0 > .patient-info > .patient-name}}}
+    .patient-meta {{{#unuID0 > .patient-info > .patient-meta}}}
+template#unuID1 {{{#unuID1 > .exam-count}}}
+template#unuID2
+    details.exam-item(dynamic-data-index='{{{index}}}')
+        summary
+            .exam-header-main
+                .exam-folder-icon(aria-hidden='true') {{{#unuID2 > .exam-item > summary > .exam-header-main > .exam-folder-icon}}}
+                .exam-text-block
+                    .exam-title {{{#unuID2 > .exam-item > summary > .exam-header-main > .exam-text-block > .exam-title}}}
+                    .exam-sub {{{#unuID2 > .exam-item > summary > .exam-header-main > .exam-text-block > .exam-sub}}}
+            .exam-header-meta
+                span.exam-date {{{#unuID2 > .exam-item > summary > .exam-header-meta > .exam-date}}}
+                span.exam-type {{{#unuID2 > .exam-item > summary > .exam-header-meta > .exam-type}}}
+            .exam-chevron(aria-hidden='true') {{{#unuID2 > .exam-item > summary > .exam-chevron}}}
+        .exam-body
+            .exam-body-grid
+                div
+                    .exam-body-row
+                        span.exam-body-label {{{#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > .exam-body-label}}}
+                        span {{{#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > span}}}
+                    .exam-body-row
+                        span.exam-body-label {{{#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > .exam-body-label:nth-child(2)}}}
+                        span {{{#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > span:nth-child(2)}}}
+                    .exam-body-row
+                        span.exam-body-label {{{#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > .exam-body-label:nth-child(3)}}}
+                        span {{{#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > span:nth-child(3)}}}
+                div
+                    .exam-body-row
+                        span.exam-body-label {{{#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > .exam-body-label:nth-child(4)}}}
+                        span {{{#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > span:nth-child(4)}}}
+                    .exam-body-row
+                        span.exam-body-label {{{#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > .exam-body-label:nth-child(5)}}}
+                        span {{{#unuID2 > .exam-item > .exam-body > .exam-body-grid > div > .exam-body-row > span:nth-child(5)}}}
+            .exam-actions
+                button.btn-primary(type='button') {{{#unuID2 > .exam-item > .exam-body > .exam-actions > .btn-primary}}}
+                button.btn-secondary(type='button') {{{#unuID2 > .exam-item > .exam-body > .exam-actions > .btn-secondary}}}
+                //  NEU: KI-Funktionen 
+                button.btn-secondary.js-ki-explain(type='button') {{{#unuID2 > .exam-item > .exam-body > .exam-actions > .btn-secondary.js-ki-explain}}}
+                button.btn-secondary.js-ki-translate(type='button') {{{#unuID2 > .exam-item > .exam-body > .exam-actions > .btn-secondary.js-ki-translate}}}

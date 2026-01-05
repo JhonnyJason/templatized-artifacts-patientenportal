@@ -1,0 +1,12 @@
+{
+    "#unuID0 > .patient-info > .patient-name": {
+        "pugKey": "unuKey15",
+        "pugString": "!{templated.unuKey15}",
+        "content": "M.A. Lackner Peregrin"
+    },
+    "#unuID0 > .patient-info > .patient-meta": {
+        "pugKey": "unuKey16",
+        "pugString": "!{templated.unuKey16}",
+        "content": "\n            SV-Nummer: 1322 · Geboren am 07.04.1979\n          "
+    }
+}

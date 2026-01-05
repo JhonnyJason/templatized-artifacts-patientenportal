@@ -1,0 +1,217 @@
+{
+    " > head > title": {
+        "pugKey": "unuKey0",
+        "pugString": "!{templated.unuKey0}",
+        "content": "SustSol – SusDoX Web | Untersuchungen"
+    },
+    " > body > .skip-link": {
+        "pugKey": "unuKey1",
+        "pugString": "!{templated.unuKey1}",
+        "content": "Zum Hauptinhalt springen"
+    },
+    " > body > .page > header > .brand > .brand-main > span": {
+        "pugKey": "unuKey2",
+        "pugString": "!{templated.unuKey2}",
+        "content": "SustSol"
+    },
+    " > body > .page > header > .brand > .brand-sub": {
+        "pugKey": "unuKey3",
+        "pugString": "!{templated.unuKey3}",
+        "content": "SusDoX Web – Patientenportal"
+    },
+    " > body > .page > header > nav[aria-label]": {
+        "pugKey": "unuKey4",
+        "pugString": "templated.unuKey4",
+        "content": "Hauptnavigation"
+    },
+    " > body > .page > header > nav > .nav-link:nth-child(2)": {
+        "pugKey": "unuKey6",
+        "pugString": "!{templated.unuKey6}",
+        "content": "Mein Account"
+    },
+    " > body > .page > header > nav > .nav-link:nth-child(3)": {
+        "pugKey": "unuKey7",
+        "pugString": "!{templated.unuKey7}",
+        "content": "Support"
+    },
+    " > body > .page > header > .logout-btn[aria-label]": {
+        "pugKey": "unuKey8",
+        "pugString": "templated.unuKey8",
+        "content": "Abmelden"
+    },
+    " > body > .page > header > .logout-btn > span:nth-child(2)": {
+        "pugKey": "unuKey10",
+        "pugString": "!{templated.unuKey10}",
+        "content": "⎋"
+    },
+    "#page-title": {
+        "pugKey": "unuKey11",
+        "pugString": "!{templated.unuKey11}",
+        "content": "Meine Untersuchungen"
+    },
+    "#main > section > .page-description": {
+        "pugKey": "unuKey12",
+        "pugString": "!{templated.unuKey12}",
+        "content": "\n          Hier finden Sie eine Übersicht Ihrer bisherigen Untersuchungen. Sie können die Ordner aufklappen,\n          um Details anzuzeigen, Befunde zu öffnen oder eine KI-gestützte Erklärung/Übersetzung zu erhalten.\n        "
+    },
+    "#main > .patient-card[aria-label]": {
+        "pugKey": "unuKey13",
+        "pugString": "templated.unuKey13",
+        "content": "Patientendaten"
+    },
+    "#main > .patient-card > .patient-icon": {
+        "pugKey": "unuKey14",
+        "pugString": "!{templated.unuKey14}",
+        "content": "👤"
+    },
+    "#main > section[aria-label]": {
+        "pugKey": "unuKey17",
+        "pugString": "templated.unuKey17",
+        "content": "Liste der Untersuchungen"
+    },
+    "#main > section > .exam-section-header > .page-title": {
+        "pugKey": "unuKey18",
+        "pugString": "!{templated.unuKey18}",
+        "content": "Untersuchungsübersicht"
+    },
+    " > body > .page > footer": {
+        "pugKey": "unuKey40",
+        "pugString": "!{templated.unuKey40}",
+        "content": "\n      © SustSol GmbH · SusDoX Web Patientenportal\n    "
+    },
+    "#ki-modal-title": {
+        "pugKey": "unuKey41",
+        "pugString": "!{templated.unuKey41}",
+        "content": "\n          KI-Unterstützung für Ihren Befund\n        "
+    },
+    "#ki-modal-close-btn[aria-label]": {
+        "pugKey": "unuKey42",
+        "pugString": "templated.unuKey42",
+        "content": "Dialog schließen"
+    },
+    "#ki-modal-close-btn": {
+        "pugKey": "unuKey43",
+        "pugString": "!{templated.unuKey43}",
+        "content": "\n          ×\n        "
+    },
+    "#ki-modal-description": {
+        "pugKey": "unuKey44",
+        "pugString": "!{templated.unuKey44}",
+        "content": "\n        Hier können Sie Ihren Befund in einfacher Sprache erklären oder in eine andere Sprache\n        übersetzen lassen. Dieser Service ersetzt keine ärztliche Beratung.\n      "
+    },
+    "#ki-modal-backdrop > .modal > .modal-disclaimer[aria-label]": {
+        "pugKey": "unuKey45",
+        "pugString": "templated.unuKey45",
+        "content": "Hinweis zu Anonymisierung und Kosten"
+    },
+    "#ki-modal-backdrop > .modal > .modal-disclaimer": {
+        "pugKey": "unuKey46",
+        "pugString": "!{templated.unuKey46}",
+        "content": "\n        <strong>Wichtiger Hinweis:</strong><br>\n        Ihr Befund wird vor der Verarbeitung automatisch <strong>anonymisiert</strong> und erst danach\n        an den KI-Dienst in Kooperation mit <strong>Radishmed / MedUni Graz</strong> weitergeleitet.<br>\n        <div class=\"modal-price-row\">\n          <span class=\"price-badge\" aria-label=\"Preis\">\n            Preis: 2,50&nbsp;€ pro Befundvereinfachung\n          </span>\n        </div>\n        <div style=\"margin-top:6px; color: var(--text-subtle);\">\n          Die KI-Erklärung dient der Verständlichkeit und ersetzt keine ärztliche Diagnose oder Beratung.\n        </div>\n      "
+    },
+    "#ki-modal-backdrop > .modal > .modal-consent > label": {
+        "pugKey": "unuKey47",
+        "pugString": "!{templated.unuKey47}",
+        "content": "\n          Ich habe den Hinweis zur <strong>Anonymisierung</strong> gelesen und akzeptiere die\n          <strong>Kosten von 2,50&nbsp;€</strong> für diese Anfrage.\n          <small>Sie können den Vorgang jederzeit mit „Abbrechen“ beenden.</small>\n        "
+    },
+    "#ki-consent-error": {
+        "pugKey": "unuKey48",
+        "pugString": "!{templated.unuKey48}",
+        "content": "\n        Bitte bestätigen Sie zuerst Anonymisierung und Kosten, um fortzufahren.\n      "
+    },
+    "#ki-mode-select > option:nth-child(2)": {
+        "pugKey": "unuKey51",
+        "pugString": "!{templated.unuKey51}",
+        "content": "Befund übersetzen"
+    },
+    "#ki-modal-backdrop > .modal > .modal-form-row > .modal-label:nth-child(2)": {
+        "pugKey": "unuKey52",
+        "pugString": "!{templated.unuKey52}",
+        "content": "\n          Zielsprache (für Erklärung oder Übersetzung):\n        "
+    },
+    "#ki-language-select > option:nth-child(2)": {
+        "pugKey": "unuKey54",
+        "pugString": "!{templated.unuKey54}",
+        "content": "Deutsch (Fachsprache)"
+    },
+    "#ki-language-select > option:nth-child(3)": {
+        "pugKey": "unuKey55",
+        "pugString": "!{templated.unuKey55}",
+        "content": "Englisch"
+    },
+    "#ki-language-select > option:nth-child(4)": {
+        "pugKey": "unuKey56",
+        "pugString": "!{templated.unuKey56}",
+        "content": "Kroatisch"
+    },
+    "#ki-language-select > option:nth-child(5)": {
+        "pugKey": "unuKey57",
+        "pugString": "!{templated.unuKey57}",
+        "content": "Serbisch"
+    },
+    "#ki-language-select > option:nth-child(6)": {
+        "pugKey": "unuKey58",
+        "pugString": "!{templated.unuKey58}",
+        "content": "Bosnisch"
+    },
+    "#ki-language-select > option:nth-child(7)": {
+        "pugKey": "unuKey59",
+        "pugString": "!{templated.unuKey59}",
+        "content": "Türkisch"
+    },
+    "#ki-modal-backdrop > .modal > .modal-form-row > .modal-label:nth-child(3)": {
+        "pugKey": "unuKey60",
+        "pugString": "!{templated.unuKey60}",
+        "content": "\n          Optional: Eigene Frage / Hinweis an die KI:\n        "
+    },
+    "#ki-notes[placeholder]": {
+        "pugKey": "unuKey61",
+        "pugString": "templated.unuKey61",
+        "content": "Zum Beispiel: Bitte erklären Sie mir besonders den Teil über die Lunge."
+    },
+    "#ki-modal-cancel-btn": {
+        "pugKey": "unuKey62",
+        "pugString": "!{templated.unuKey62}",
+        "content": "\n          Abbrechen\n        "
+    },
+    "#ki-modal-start-btn": {
+        "pugKey": "unuKey63",
+        "pugString": "!{templated.unuKey63}",
+        "content": "\n          KI-Anfrage starten\n        "
+    },
+    "#ki-modal-loading": {
+        "pugKey": "unuKey64",
+        "pugString": "!{templated.unuKey64}",
+        "content": "\n        KI-Anfrage wird verarbeitet … bitte warten.\n      "
+    },
+    "#ki-modal-result > .modal-result-placeholder": {
+        "pugKey": "unuKey65",
+        "pugString": "!{templated.unuKey65}",
+        "content": "\n          Hier erscheint die KI-Erklärung oder Übersetzung zum ausgewählten Befund.\n        "
+    },
+    " > body > .page > header > nav > .nav-link:nth-child(1)": {
+        "pugKey": "unuKey5",
+        "pugString": "!{templated.unuKey5}",
+        "content": "Untersuchungen"
+    },
+    " > body > .page > header > .logout-btn > span:nth-child(1)": {
+        "pugKey": "unuKey9",
+        "pugString": "!{templated.unuKey9}",
+        "content": "Logout"
+    },
+    "#ki-modal-backdrop > .modal > .modal-form-row > .modal-label:nth-child(1)": {
+        "pugKey": "unuKey49",
+        "pugString": "!{templated.unuKey49}",
+        "content": "Funktion:"
+    },
+    "#ki-mode-select > option:nth-child(1)": {
+        "pugKey": "unuKey50",
+        "pugString": "!{templated.unuKey50}",
+        "content": "Befund einfach erklären"
+    },
+    "#ki-language-select > option:nth-child(1)": {
+        "pugKey": "unuKey53",
+        "pugString": "!{templated.unuKey53}",
+        "content": "Deutsch – einfache Sprache (Empfehlung)"
+    }
+}

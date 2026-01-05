@@ -1,0 +1,723 @@
+
+    /* ======================================================================
+       RESET & BASIS
+       ====================================================================== */
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    /* ======================================================================
+       CI / DESIGN TOKENS (angepasst an bilder-befunde.at Look & Feel)
+       ----------------------------------------------------------------------
+       WICHTIG: Wir ändern NUR Variablen, damit Layout/UX unverändert bleibt.
+       So kann dein Webdesigner später feinjustieren, ohne überall CSS zu suchen.
+
+       LAYOUT-SPECS (Desktop):
+       - Content max-width: 1200px (siehe .page)
+       - Page padding: 40px links/rechts ab 1280px Viewport, sonst 16px
+       - Header padding: 20px 24px (oben/unten, links/rechts)
+       - Header Card Radius: 16px
+       - Card Shadow: soft
+       - Buttons: padding 6px 14px, Pill-Form (radius 999px)
+       - Modal: max-width 600px, padding 20px 24px 16px
+       ====================================================================== */
+
+    :root {
+      /* Hintergrund/Flächen */
+      --bg-body: #F5F7FA;        /* Page background (helles Grau/Blau) */
+      --bg-surface: #ffffff;     /* Karten/Flächen weiß */
+
+      /* Text */
+      --text-main: #333A45;      /* Haupttext (dunkles Grau statt Schwarz) */
+      --text-muted: #425466;     /* sekundärer Text (leicht bläulich) */
+      --text-subtle: #6B7280;    /* Hinweis-/Meta-Text */
+
+      /* Borders */
+      --border-subtle: #E5E7EB;  /* leichte Border */
+
+      /* Akzente (CI) */
+      --accent-purple: #1A5C96;  /* CI-Hauptfarbe (Blau) -> ersetzt bisheriges Lila */
+      --accent-yellow: #20A29D;  /* CI-Sekundärfarbe (Türkis) -> ersetzt bisheriges Gelb-Pünktchen */
+
+      /* Focus (A11y) */
+      --focus-ring: #1A5C96;     /* Fokusfarbe = CI-Blau, gut sichtbar auf hellen Flächen */
+
+      /* Radius / Shadows */
+      --radius-lg: 16px;         /* abgerundete Ecken (Cards/Modal) */
+      --shadow-soft: 0 8px 22px rgba(15, 23, 42, 0.08);
+      --shadow-soft-strong: 0 12px 28px rgba(15, 23, 42, 0.15);
+
+      /* Zusatz-Tokens für KI-Disclaimer (NEU) */
+      --info-bg: #ECF4FA;         /* dezentes Info-Panel */
+      --info-border: #20A29D;     /* Türkis-Akzentstreifen */
+      --price-bg: #E8F3FF;        /* Badge Hintergrund */
+      --price-text: #1A5C96;      /* Badge Text */
+      --danger-text: #8A1C1C;     /* optional für Warnhinweise */
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-body);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ======================================================================
+       ACCESSIBILITY: SKIP LINK
+       ----------------------------------------------------------------------
+       Maße:
+       - Position: top/left 8px
+       - Padding: 8px 12px
+       - Wird per :focus eingeblendet (translateY)
+       ====================================================================== */
+    .skip-link {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      padding: 8px 12px;
+      background: var(--accent-purple);
+      color: #ffffff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transform: translateY(-150%);
+      transition: transform 0.15s ease;
+      z-index: 50;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+      outline: none;
+    }
+
+    /* ======================================================================
+       PAGE-LAYOUT
+       ----------------------------------------------------------------------
+       Maße:
+       - max-width: 1200px (Standard Desktop Contentbreite)
+       - padding: 40px 16px 60px (oben, seiten, unten)
+       - ab 1280px: padding-left/right 40px (typischer Desktop-Rand)
+       ====================================================================== */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 16px 60px;
+    }
+
+    @media (min-width: 1280px) {
+      .page {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+    }
+
+    /* ======================================================================
+       HEADER
+       ----------------------------------------------------------------------
+       Maße:
+       - Padding: 20px 24px
+       - Border-radius: 16px
+       - Gap: 16px
+       - Shadow: soft
+       ====================================================================== */
+    header {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    /* Logo/Brand:
+       - font-size: 1.6rem (~25.6px)
+       - font-weight: 700
+    */
+    .brand-main {
+      font-size: 1.6rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Brand Dot:
+       - 10x10 px
+       - CI-Sekundärfarbe (Türkis)
+    */
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent-yellow);
+    }
+
+    .brand-sub {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-subtle);
+    }
+
+    /* Navigation:
+       - gap: 16px
+       - font-size: 0.95rem (~15.2px)
+    */
+    nav[aria-label="Hauptnavigation"] {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.95rem;
+    }
+
+    .nav-link {
+      border: none;
+      background: none;
+      padding: 4px 0;
+      cursor: pointer;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      font: inherit;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+    }
+
+    /* Active Tab:
+       - underline in CI primary blue
+    */
+    .nav-link[aria-current="page"] {
+      color: var(--accent-purple);
+      font-weight: 600;
+      border-bottom-color: var(--accent-purple);
+    }
+
+    .nav-link:focus-visible,
+    .logout-btn:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .logout-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 6px 14px;
+      background: #f9fafb;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .logout-btn:hover {
+      background: #e5e7eb;
+      color: var(--text-main);
+    }
+
+    /* ======================================================================
+       MAIN
+       ----------------------------------------------------------------------
+       - gap: 24px zwischen Abschnitten
+       ====================================================================== */
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .page-title {
+      font-size: 1.4rem;  /* ~22.4px */
+      font-weight: 600;
+    }
+
+    .page-description {
+      font-size: 0.95rem; /* ~15.2px */
+      color: var(--text-subtle);
+      margin-top: -4px;
+    }
+
+    /* ======================================================================
+       PATIENT CARD
+       ----------------------------------------------------------------------
+       Maße:
+       - Padding: 20px 24px
+       - Icon: 48x48
+       - Gap: 16px
+       ====================================================================== */
+    .patient-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .patient-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: #eef2ff; /* bewusst dezent belassen */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--accent-purple);
+      flex-shrink: 0;
+    }
+
+    .patient-info {
+      min-width: 0;
+    }
+
+    .patient-name {
+      font-size: 1.1rem; /* ~17.6px */
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .patient-meta {
+      font-size: 0.9rem; /* ~14.4px */
+      color: var(--text-subtle);
+    }
+
+    /* ======================================================================
+       UNTERSUCHUNGEN
+       ----------------------------------------------------------------------
+       - exam-list gap: 12px
+       - summary padding: 14px 18px
+       ====================================================================== */
+    .exam-section-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .exam-count {
+      font-size: 0.9rem;
+      color: var(--text-subtle);
+    }
+
+    .exam-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .exam-item {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .exam-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .exam-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .exam-header-main {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .exam-folder-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .exam-text-block {
+      min-width: 0;
+    }
+
+    .exam-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .exam-sub {
+      font-size: 0.85rem;
+      color: var(--text-subtle);
+      margin-top: 2px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .exam-header-meta {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .exam-date {
+      font-weight: 600;
+      display: block;
+    }
+
+    .exam-type {
+      font-size: 0.8rem;
+    }
+
+    .exam-chevron {
+      margin-left: 8px;
+      font-size: 1rem;
+      color: var(--text-subtle);
+      flex-shrink: 0;
+    }
+
+    details[open] .exam-chevron {
+      transform: rotate(90deg);
+    }
+
+    .exam-item summary:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .exam-body {
+      border-top: 1px solid var(--border-subtle);
+      padding: 12px 18px 16px;
+      font-size: 0.9rem;
+      background: #f9fafb;
+    }
+
+    .exam-body-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      gap: 8px 24px;
+    }
+
+    .exam-body-label {
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 4px;
+    }
+
+    .exam-body-row + .exam-body-row {
+      margin-top: 4px;
+    }
+
+    .exam-actions {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Buttons:
+       - btn-primary nutzt CI primary blue (via --accent-purple)
+       - Radius: 999px (Pill)
+       - Padding: 6px 14px (visuelle Höhe ~32-36px je nach Font)
+    */
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 14px;
+      background: var(--accent-purple);
+      color: #ffffff;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      padding: 6px 14px;
+      background: #ffffff;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    /* Hover:
+       - Primary slightly darker for feedback (CI-konform)
+    */
+    .btn-primary:hover {
+      background: #144a7a; /* dunkleres CI-Blau */
+    }
+
+    .btn-secondary:hover {
+      background: #f3f4f6;
+    }
+
+    .btn-primary:focus-visible,
+    .btn-secondary:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    /* ======================================================================
+       FOOTER
+       ====================================================================== */
+    footer {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      text-align: center;
+      color: var(--text-subtle);
+      padding: 12px 0;
+    }
+
+    /* ======================================================================
+       MODAL / KI DIALOG
+       ----------------------------------------------------------------------
+       Maße:
+       - Backdrop: fixed inset 0
+       - Modal: max-width 600px, width 100%
+       - Padding: 20px 24px 16px
+       - Result max-height: 220px
+       ====================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .modal-backdrop[aria-hidden="false"] {
+      display: flex;
+    }
+
+    .modal {
+      max-width: 600px;
+      width: 100%;
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft-strong);
+      padding: 20px 24px 16px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .modal-close-btn {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--text-subtle);
+    }
+
+    .modal-close-btn:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .modal-text {
+      font-size: 0.9rem;
+      color: var(--text-subtle);
+      margin-bottom: 12px;
+    }
+
+    /* =========================
+       NEU: Disclaimer-Block
+       -------------------------
+       - Hintergrund: --info-bg
+       - linker Akzent: 4px --info-border
+       - padding: 12px 14px
+       - font-size: 0.88rem (~14px)
+       ========================= */
+    .modal-disclaimer {
+      background: var(--info-bg);
+      border-left: 4px solid var(--info-border);
+      padding: 12px 14px;
+      border-radius: 10px;
+      margin: 10px 0 12px 0;
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+
+    .modal-disclaimer strong {
+      color: var(--accent-purple);
+    }
+
+    .modal-price-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .price-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--price-bg);
+      color: var(--price-text);
+      border: 1px solid rgba(26, 92, 150, 0.25);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* Checkbox-Row (A11y):
+       - Ziel: User bestätigt Kosten/Anonymisierung
+    */
+    .modal-consent {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .modal-consent input {
+      margin-top: 3px;
+    }
+
+    .modal-consent label {
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+
+    .modal-consent small {
+      display: block;
+      color: var(--text-subtle);
+      margin-top: 2px;
+    }
+
+    .modal-consent-error {
+      display: none;
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: var(--danger-text);
+    }
+
+    .modal-form-row {
+      margin-bottom: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .modal-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .modal-select,
+    .modal-textarea {
+      width: 100%;
+      font-size: 0.9rem;
+      padding: 6px 8px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 8px;
+      margin-bottom: 6px;
+    }
+
+    .modal-result {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #f9fafb;
+      border: 1px dashed var(--border-subtle);
+      font-size: 0.9rem;
+      max-height: 220px;
+      overflow: auto;
+    }
+
+    .modal-result-placeholder {
+      color: var(--text-subtle);
+      font-style: italic;
+    }
+
+    .modal-loading {
+      font-size: 0.9rem;
+      color: var(--accent-purple); /* CI-Blau statt Lila */
+      margin-top: 6px;
+    }
+
+    /* Disabled State für Start-Button (NEU) */
+    .btn-primary[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        align-items: flex-start;
+      }
+      nav[aria-label="Hauptnavigation"] {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .exam-body-grid {
+        grid-template-columns: 1fr;
+      }
+      .exam-header-meta {
+        text-align: left;
+      }
+      .modal {
+        max-width: 90%;
+      }
+    }
+  
